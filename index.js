@@ -38,6 +38,9 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 // app routes
+app.use('/', () => {
+  console.log('Here now')
+})
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/events', eventRouter)
 app.use('/api/v1/users', userRouter)
