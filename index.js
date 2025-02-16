@@ -38,7 +38,6 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 // app routes
-
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/events', eventRouter)
 app.use('/api/v1/users', userRouter)
@@ -51,10 +50,13 @@ app.use(
     throw new AppError(`Can't find the ${req.originalUrl} route on this server`, 404);
   })
 );
+
 // Global Error Handler
 app.use(globalErrorHandler);
 
+// Declare PORT
 const PORT = process.env.APP_PORT || 4000
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
