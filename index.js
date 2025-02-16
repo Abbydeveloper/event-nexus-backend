@@ -39,7 +39,7 @@ app.use(morgan('dev'));
 
 // app routes
 app.use('/', (req, res) => {
-  return 'Event Nexus!';
+  res.send('Event Nexus!');
 });
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/events', eventRouter)
