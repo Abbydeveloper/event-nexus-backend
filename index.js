@@ -42,7 +42,7 @@ app.use(morgan('dev'));
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/events', eventRouter)
 app.use('/api/v1/users', userRouter)
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
   res.send('Event Nexus!');
 });
 app.use(
