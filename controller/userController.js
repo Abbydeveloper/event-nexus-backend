@@ -4,14 +4,15 @@ const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
 const getAllUsers = catchAsync(async (req, res, next) => {
-  const userId = req.user.id;
+  // const userId = req.user.id;
+  const currentUser = req.user
 
   if (currentUser.role !== role.Admin) {
     return next(new AppError('User not authorized to perform this action', 401));
   }
   const result = await user.findAll({
       include: user,
-      where: { createdBy: userId },
+      where: { createdBy: currentUser.id },
   });
 
   return res.json({
