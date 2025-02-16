@@ -38,13 +38,13 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 // app routes
-app.use('/', (req, res) => {
-  res.send('Event Nexus!');
-});
+
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/events', eventRouter)
 app.use('/api/v1/users', userRouter)
-
+app.use('/', (req, res) => {
+  res.send('Event Nexus!');
+});
 app.use(
   '*',
   catchAsync(async (req, res, next) => {
